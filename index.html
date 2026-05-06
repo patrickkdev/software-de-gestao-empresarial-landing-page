@@ -42,12 +42,21 @@
   }
   </script>
   
-  <div class="gtranslate_wrapper"></div>
-  <script>window.gtranslateSettings = {"default_language":"en","native_language_names":true,"detect_browser_language":true,"wrapper_selector":".gtranslate_wrapper","flag_style":"3d"}</script>
-  <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
   <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
+  <!-- GTranslate -->
+  <script>
+    window.gtranslateSettings = {
+      "default_language":"en",
+      "native_language_names":true,
+      "detect_browser_language":true,
+      "languages":["en","es","pt","fr","ru","it","hi","de","ar","zh-CN","ja"],
+      "wrapper_selector":".gtranslate_wrapper",
+      "flag_style":"none"
+    }
+  </script>
+  <script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js" defer></script>
   <header>
     <div class="container nav" aria-label="Primary">
       <a href="#top" class="brand" aria-label="Growth OS home">
@@ -59,8 +68,14 @@
         <a href="#how-it-works">How it works</a>
         <a href="#pricing">Pricing</a>
         <a href="#use-cases">Use cases</a>
-        <a href="#contact" class="nav-cta">Request access</a>
       </nav>
+      
+      <div class="nav-actions">
+        <div class="lang-switch">
+          <div class="gtranslate_wrapper"></div>
+        </div>
+        <a href="#contact" class="nav-cta">Request access</a>
+      </div>
     </div>
   </header>
 
