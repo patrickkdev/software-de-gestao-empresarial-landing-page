@@ -3,540 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MakzFlow — Work in Progress</title>
-  <meta name="description" content="An integrated growth platform for small and medium-sized businesses to launch landing pages and catalog websites, capture leads, route sales, and track cash flow in one fast and intuitive platform." />
+
+  <title>MakzFlow - The all-in-one platform for modern businesses to showcase products, get leads, manage sales pipelines, and track cash flow without clutter.</title>
+  <meta name="description" content="Build landing pages, capture leads, route sales, and track cash flow in one platform for SMBs. SEO-ready pages, CRM workflows, and real-time financial tracking." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://flow.makztech.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="MakzFlow - The all-in-one platform for modern businesses to showcase products, get leads, manage sales pipelines, and track cash flow without clutter." />
+  <meta property="og:description" content="Landing pages, CRM, lead routing, and cash flow tracking in one platform." />
+  <meta property="og:url" content="https://flow.makztech.com/" />
+  <meta property="og:image" content="https://makztech.com/makztech-st.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MakzFlow - The all-in-one platform for modern businesses to showcase products, get leads, manage sales pipelines, and track cash flow without clutter." />
+  <meta name="twitter:description" content="Landing pages, CRM, lead routing, and cash flow tracking in one platform." />
+  <meta name="twitter:image" content="https://makztech.com/makztech-st.png" />
+
   <meta name="theme-color" content="#4f46e5" />
+  <link rel="icon" href="https://makztech.com/makztech-st.png" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "MakzFlow",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "Landing page builder, CRM, lead routing, and cash flow tracking platform for modern businesses.",
+    "offers": {
+      "@type": "Offer",
+      "price": "100",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  
   <div class="gtranslate_wrapper"></div>
   <script>window.gtranslateSettings = {"default_language":"en","native_language_names":true,"detect_browser_language":true,"wrapper_selector":".gtranslate_wrapper","flag_style":"3d"}</script>
   <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
-  <style>
-    :root {
-      --bg: #0b1020;
-      --bg-soft: #111831;
-      --panel: rgba(15, 23, 42, 0.78);
-      --panel-border: rgba(148, 163, 184, 0.16);
-      --text: #e5eefc;
-      --muted: #98a7c2;
-      --muted-2: #6f7f9b;
-      --accent: #7c3aed;
-      --accent-2: #4f46e5;
-      --accent-soft: rgba(124, 58, 237, 0.16);
-      --success: #22c55e;
-      --warning: #f59e0b;
-      --radius-xl: 28px;
-      --radius-lg: 20px;
-      --radius-md: 16px;
-      --shadow: 0 24px 80px rgba(2, 6, 23, 0.42);
-      --container: 1180px;
-      --border: 1px solid var(--panel-border);
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(124, 58, 237, 0.22), transparent 28%),
-        radial-gradient(circle at top right, rgba(79, 70, 229, 0.18), transparent 24%),
-        linear-gradient(180deg, #0b1020 0%, #090d19 100%);
-      min-height: 100vh;
-      line-height: 1.5;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    .container { width: min(var(--container), calc(100% - 2rem)); margin: 0 auto; }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: .55rem;
-      padding: .5rem .9rem;
-      border: var(--border);
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.62);
-      backdrop-filter: blur(14px);
-      color: #dbe7ff;
-      font-size: .9rem;
-      letter-spacing: .01em;
-      width: fit-content;
-    }
-    .dot {
-      width: .55rem;
-      height: .55rem;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--success), #86efac);
-      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.12);
-    }
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      backdrop-filter: blur(18px);
-      background: rgba(9, 13, 25, 0.58);
-      border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-    }
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 1rem 0;
-    }
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: .8rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-    }
-    .mark {
-      width: 2.1rem;
-      height: 2.1rem;
-      border-radius: 14px;
-      background: white;
-      box-shadow: 0 16px 30px rgba(79, 70, 229, 0.35);
-      position: relative;
-      flex: none;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-      color: var(--muted);
-      font-size: .95rem;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-    .nav-links a:hover { color: var(--text); }
-    .nav-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: .55rem;
-      padding: .8rem 1.05rem;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: white;
-      font-weight: 600;
-      box-shadow: 0 14px 28px rgba(79, 70, 229, 0.33);
-      white-space: nowrap;
-    }
-
-    .hero {
-      padding: 5.5rem 0 4rem;
-      position: relative;
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 2rem;
-      align-items: center;
-    }
-    h1 {
-      font-size: clamp(3rem, 7vw, 5.5rem);
-      line-height: .95;
-      letter-spacing: -0.06em;
-      margin: 1rem 0 1.1rem;
-      max-width: 12ch;
-    }
-    .subtitle {
-      color: var(--muted);
-      font-size: clamp(1.05rem, 2vw, 1.2rem);
-      max-width: 62ch;
-      margin: 0 0 1.6rem;
-    }
-    .hero-actions {
-      display: flex;
-      gap: .9rem;
-      flex-wrap: wrap;
-      margin-bottom: 1.35rem;
-    }
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: .55rem;
-      padding: .95rem 1.2rem;
-      border-radius: 999px;
-      font-weight: 600;
-      border: 1px solid transparent;
-    }
-    .button-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: white;
-      box-shadow: 0 14px 28px rgba(79, 70, 229, 0.28);
-    }
-    .button-secondary {
-      background: rgba(15, 23, 42, 0.55);
-      border-color: rgba(148, 163, 184, 0.18);
-      color: var(--text);
-    }
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .75rem;
-      margin-top: 1rem;
-    }
-    .badge {
-      padding: .55rem .82rem;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.55);
-      border: 1px solid rgba(148, 163, 184, 0.12);
-      color: #dbe7ff;
-      font-size: .9rem;
-    }
-
-    .hero-card {
-      background: linear-gradient(180deg, rgba(17, 24, 49, 0.98), rgba(10, 14, 26, 0.92));
-      border: var(--border);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      position: relative;
-    }
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.26), transparent 30%),
-                  radial-gradient(circle at bottom left, rgba(79, 70, 229, 0.2), transparent 26%);
-      pointer-events: none;
-    }
-    .card-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 1rem 1.1rem;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-      position: relative;
-    }
-    .card-top strong { font-size: .96rem; }
-    .live-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      padding: .45rem .7rem;
-      border-radius: 999px;
-      background: rgba(34, 197, 94, 0.12);
-      border: 1px solid rgba(34, 197, 94, 0.24);
-      color: #baf7cf;
-      font-size: .85rem;
-      white-space: nowrap;
-    }
-    .dashboard {
-      padding: 1.1rem;
-      display: grid;
-      gap: 1rem;
-      position: relative;
-    }
-    .dashboard-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-    }
-    .mini-card {
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(148, 163, 184, 0.12);
-      border-radius: 18px;
-      padding: 1rem;
-      min-height: 130px;
-    }
-    .mini-card h3 {
-      margin: 0 0 .35rem;
-      font-size: .92rem;
-      color: #dbe7ff;
-    }
-    .mini-card p { margin: 0; color: var(--muted); font-size: .88rem; }
-    .stat {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-top: .85rem;
-    }
-    .stat strong {
-      font-size: 1.7rem;
-      letter-spacing: -0.04em;
-    }
-    .trend {
-      color: #baf7cf;
-      font-size: .88rem;
-      background: rgba(34, 197, 94, 0.12);
-      border: 1px solid rgba(34, 197, 94, 0.2);
-      padding: .25rem .5rem;
-      border-radius: 999px;
-    }
-    .list {
-      display: grid;
-      gap: .75rem;
-      margin-top: .8rem;
-    }
-    .list-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: .75rem .85rem;
-      border-radius: 14px;
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(148, 163, 184, 0.08);
-      font-size: .9rem;
-      color: var(--muted);
-    }
-    .chip {
-      padding: .3rem .55rem;
-      border-radius: 999px;
-      font-size: .78rem;
-      color: white;
-      background: linear-gradient(135deg, rgba(124, 58, 237, 0.9), rgba(79, 70, 229, 0.9));
-    }
-    .chart {
-      height: 130px;
-      border-radius: 16px;
-      background:
-        linear-gradient(180deg, rgba(124, 58, 237, 0.14), rgba(124, 58, 237, 0.04)),
-        linear-gradient(90deg, transparent 0 18%, rgba(148,163,184,0.08) 18% 19%, transparent 19% 40%, rgba(148,163,184,0.08) 40% 41%, transparent 41% 62%, rgba(148,163,184,0.08) 62% 63%, transparent 63% 100%);
-      border: 1px solid rgba(148, 163, 184, 0.1);
-      position: relative;
-      overflow: hidden;
-    }
-    .chart::after {
-      content: "";
-      position: absolute;
-      inset: 18% 5% 18% 5%;
-      border-left: 2px solid rgba(124, 58, 237, 0.7);
-      border-bottom: 2px solid rgba(124, 58, 237, 0.7);
-      border-radius: 0 0 0 22px;
-      clip-path: polygon(0 92%, 14% 82%, 25% 70%, 36% 74%, 47% 56%, 58% 48%, 69% 54%, 79% 30%, 90% 38%, 100% 15%, 100% 100%, 0 100%);
-      background: linear-gradient(180deg, rgba(124, 58, 237, 0.28), transparent 72%);
-      opacity: .95;
-    }
-
-    section {
-      padding: 3rem 0 0;
-    }
-    .section-heading {
-      display: grid;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-      max-width: 66ch;
-    }
-    .section-heading h2 {
-      margin: 0;
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.02;
-      letter-spacing: -0.05em;
-    }
-    .section-heading p { margin: 0; color: var(--muted); font-size: 1rem; }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-    }
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-    }
-    .card {
-      background: var(--panel);
-      border: var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.25rem;
-      box-shadow: var(--shadow);
-    }
-    .card h3 { margin: .1rem 0 .55rem; font-size: 1.08rem; letter-spacing: -0.02em; }
-    .card p { margin: 0; color: var(--muted); }
-    .icon {
-      width: 2.8rem;
-      height: 2.8rem;
-      display: grid;
-      place-items: center;
-      border-radius: 16px;
-      background: var(--accent-soft);
-      border: 1px solid rgba(124, 58, 237, 0.26);
-      color: #e8ddff;
-      font-weight: 700;
-      margin-bottom: .95rem;
-    }
-
-    .feature {
-      display: grid;
-      gap: .8rem;
-    }
-    .feature .meta {
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-      color: #dbe7ff;
-      font-weight: 600;
-      font-size: .92rem;
-    }
-    .bullets {
-      display: grid;
-      gap: .8rem;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-    .bullets li {
-      display: flex;
-      gap: .75rem;
-      align-items: flex-start;
-      color: var(--muted);
-    }
-    .check {
-      width: 1.35rem;
-      height: 1.35rem;
-      border-radius: 50%;
-      flex: none;
-      margin-top: .14rem;
-      background: rgba(34, 197, 94, 0.15);
-      border: 1px solid rgba(34, 197, 94, 0.25);
-      position: relative;
-    }
-    .check::after {
-      content: "";
-      position: absolute;
-      left: .42rem;
-      top: .22rem;
-      width: .32rem;
-      height: .58rem;
-      border-right: 2px solid #baf7cf;
-      border-bottom: 2px solid #baf7cf;
-      transform: rotate(40deg);
-    }
-
-    .process {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1rem;
-      counter-reset: step;
-    }
-    .step {
-      position: relative;
-      padding-top: 3.6rem;
-    }
-    .step::before {
-      counter-increment: step;
-      content: counter(step);
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 2.7rem;
-      height: 2.7rem;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: white;
-      font-weight: 700;
-      box-shadow: 0 12px 24px rgba(79, 70, 229, 0.28);
-    }
-    .step h3 { margin: 0 0 .45rem; }
-
-    .split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      align-items: stretch;
-    }
-    .callout {
-      background: linear-gradient(135deg, rgba(124, 58, 237, 0.18), rgba(79, 70, 229, 0.1));
-      border: 1px solid rgba(124, 58, 237, 0.3);
-      border-radius: var(--radius-lg);
-      padding: 1.25rem;
-    }
-    .callout h3 { margin-top: 0; }
-    .pricing {
-      display: grid;
-      gap: 1rem;
-    }
-    .price-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: .9rem 0;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.12);
-    }
-    .price-row:last-child { border-bottom: 0; padding-bottom: 0; }
-    .price-row strong { display: block; margin-bottom: .18rem; }
-    .price-row span { color: var(--muted); font-size: .92rem; }
-    .price-tag {
-      font-size: 1.1rem;
-      white-space: nowrap;
-      color: #dbe7ff;
-    }
-
-    .footer-cta {
-      background:
-        radial-gradient(circle at top right, rgba(124, 58, 237, 0.3), transparent 28%),
-        linear-gradient(180deg, rgba(17, 24, 49, 0.96), rgba(9, 13, 25, 0.96));
-      border: var(--border);
-      border-radius: 32px;
-      padding: 1.6rem;
-      box-shadow: var(--shadow);
-    }
-    .footer-cta-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .footer-cta h2 { margin: 0 0 .35rem; }
-    .footer-cta p { margin: 0; color: var(--muted); max-width: 62ch; }
-
-    footer {
-      padding: 0 0 2rem;
-      color: var(--muted-2);
-      font-size: .95rem;
-    }
-    .footer-grid {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-      border-top: 1px solid rgba(148, 163, 184, 0.1);
-      padding-top: 1.1rem;
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid, .split, .grid-3, .grid-2, .process { grid-template-columns: 1fr; }
-      h1 { max-width: 100%; }
-      .nav { align-items: flex-start; flex-direction: column; }
-      .nav-links { justify-content: flex-start; }
-    }
-
-    @media (max-width: 640px) {
-      .hero { padding-top: 3.4rem; }
-      .dashboard-grid { grid-template-columns: 1fr; }
-      .card, .callout, .footer-cta { padding: 1rem; }
-      .button, .nav-cta { width: 100%; }
-      .hero-actions { flex-direction: column; }
-      .nav-links { gap: .9rem; }
-      .footer-cta-inner { align-items: flex-start; }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
   <header>
@@ -562,20 +71,18 @@
           <span class="eyebrow"><span class="dot" aria-hidden="true"></span> Work in progress.</span>
           <h1>Launch Pages. Capture Leads. Close Deals.</h1>
           <p class="subtitle">
-            The all-in-one platform for modern SMBs to showcase products, manage sales pipelines, and track cash flow without the clutter of duct-taped software.
+			The all-in-one platform for modern businesses to showcase products, get leads, manage sales pipelines, and track cash flow without clutter.
           </p>
+		  <ul class="subtitle">
+		    <li>Manage multiple businesses in one place</li>
+		    <li>Dedicated website per business to showcase products and capture leads</li>
+		    <li>Team collaboration built in</li>
+		    <li>SEO-ready, campaign-ready landing pages</li>
+		    <li>Clean UX, solid engineering, transparent pricing, generous free tier</li>
+		  </ul>
           <div class="hero-actions">
             <a class="button button-primary" href="#contact">Request early access</a>
             <a class="button button-secondary" href="#features">See the platform</a>
-          </div>
-          <p class="subtitle" style="margin-bottom:0; max-width: 58ch;">
-            Reliable engineering. Intuitive workflows. Clean UX. Performance-first pages with transparent pricing, a generous freemium entry point, and precise lead-to-cash visibility.
-          </p>
-          <div class="hero-badges" aria-label="Highlights">
-            <span class="badge">Fast landing pages</span>
-            <span class="badge">Smart lead routing</span>
-            <span class="badge">Financial tracking</span>
-            <span class="badge">Granular team permissions</span>
           </div>
         </div>
 
@@ -623,7 +130,6 @@
     <section id="features">
       <div class="container">
         <div class="section-heading">
-          <span class="eyebrow">Built for businesses that sell high-value products and services</span>
           <h2>One system for pages, leads, team collaboration, and finance.</h2>
           <p>Instead of stitching together a site builder, CRM, and ledger, everything works natively in one shared data model.</p>
         </div>
@@ -650,7 +156,7 @@
       </div>
     </section>
 
-    <section>
+    <section id="pricing">
       <div class="container split">
         <article class="callout">
           <span class="eyebrow">What makes it different</span>
@@ -664,7 +170,7 @@
             <li><span class="check" aria-hidden="true"></span><span>Unified data model for products, leads, cash flow, and team ownership.</span></li>
           </ul>
         </article>
-        <article class="card pricing" id="pricing">
+        <article class="card pricing">
           <span class="eyebrow">Transparent pricing</span>
           <h3 style="margin:0;">Simple tiers. No friction.</h3>
           <div class="price-row">
@@ -695,24 +201,27 @@
     <section id="how-it-works">
       <div class="container">
         <div class="section-heading">
-          <span class="eyebrow">How it works</span>
           <h2>From inventory to lead to revenue.</h2>
           <p>Every step is connected so your team can move quickly and understand what drives results.</p>
         </div>
         <div class="process">
-          <article class="card step">
+          <article class="card">
+          	<div class="icon" aria-hidden="true">1</div>
             <h3>Build your catalog</h3>
             <p>Upload products, properties, or service tiers with pricing, imagery, and rich details.</p>
           </article>
-          <article class="card step">
+          <article class="card">
+          	<div class="icon" aria-hidden="true">2</div>
             <h3>Launch a page</h3>
             <p>Spin up a branded, SEO-ready landing page with a clean CTA and tracking in place.</p>
           </article>
-          <article class="card step">
+          <article class="card">
+          	<div class="icon" aria-hidden="true">3</div>
             <h3>Work the pipeline</h3>
             <p>Incoming leads flow into the CRM with source data, ownership, statuses, and follow-ups.</p>
           </article>
-          <article class="card step">
+          <article class="card">
+          	<div class="icon" aria-hidden="true">4</div>
             <h3>Close and track</h3>
             <p>Convert the deal, record the sale, and tie the income event to the originating lead.</p>
           </article>
@@ -723,9 +232,7 @@
     <section id="use-cases">
       <div class="container">
         <div class="section-heading">
-          <span class="eyebrow">Use cases</span>
-          <h2>Built for teams selling expensive things and complex services.</h2>
-          <p>Designed for industries where presentation, speed, follow-up, and attribution matter.</p>
+          <h2>Designed for industries where presentation, speed, follow-up, and attribution matter.</h2>
         </div>
         <div class="grid-2">
           <article class="card">
@@ -744,36 +251,28 @@
             <h3>General SMBs</h3>
             <p>Replace the spreadsheet trap with one operating system for sales, operations, and cash flow visibility.</p>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container split">
-        <article class="card">
-          <span class="eyebrow">AI assistance</span>
-          <h3>Smart suggestions that support the team.</h3>
-          <ul class="bullets" style="margin-top:1rem;">
-          	<li><span class="check" aria-hidden="true"></span><span>Ask questions about your dashboard and get plain-language insights, summaries, and alerts from your data.</span></li>
-            <li><span class="check" aria-hidden="true"></span><span>Auto-drafted SEO titles, descriptions, and keyword ideas from product details.</span></li>
-            <li><span class="check" aria-hidden="true"></span><span>Next-best-action prompts for lead follow-up timing and channel selection.</span></li>
-          </ul>
-        </article>
-        <article class="card">
-          <span class="eyebrow">Why teams will care</span>
-          <h3>Less friction. Faster response. Better attribution.</h3>
-          <p>
-            Lead interactions are easier to manage, finance is easier to audit, and the dashboard stays intuitive enough for the whole team to use daily.
-          </p>
-          <div class="hero-badges" style="margin-top:1rem;">
-            <span class="badge">SEO controls</span>
-            <span class="badge">UTM tracking</span>
-            <span class="badge">Referral tracking</span>
-            <span class="badge">Team permissions</span>
-            <span class="badge">Cash flow insights</span>
+          <article class="card">
+	          <h3>Smart AI suggestions that support the team.</h3>
+	          <ul class="bullets" style="margin-top:1rem;">
+	          	<li><span class="check" aria-hidden="true"></span><span>Ask questions about your dashboard and get plain-language insights, summaries, and alerts from your data.</span></li>
+	            <li><span class="check" aria-hidden="true"></span><span>Auto-drafted SEO titles, descriptions, and keyword ideas from product details.</span></li>
+	            <li><span class="check" aria-hidden="true"></span><span>Next-best-action prompts for lead follow-up timing and channel selection.</span></li>
+	          </ul>
+	        </article>
+	        <article class="card">
+	          <h3>Less friction. Faster response. Better attribution.</h3>
+	          <p>
+	            Lead interactions are easier to manage, finance is easier to audit, and the dashboard stays intuitive enough for the whole team to use daily.
+	          </p>
+	          <div class="hero-badges" style="margin-top:1rem;">
+	            <span class="badge">SEO controls</span>
+	            <span class="badge">UTM/Referral tracking</span>
+	            <span class="badge">Team permissions</span>
+	            <span class="badge">Cash flow insights</span>
+	          </div>
+	        </article>
           </div>
-        </article>
-      </div>
+      	</div>
     </section>
 
     <section id="contact">
@@ -783,7 +282,7 @@
             <h2>Ready to simplify your sales engine?</h2>
             <p>Stop managing software and start managing your business. Join the early list and follow the build in public.</p>
           </div>
-          <a class="button button-primary" href="mailto:hello@example.com?subject=Growth%20OS%20Early%20Access">Request early access</a>
+          <a class="button button-primary" href="mailto:patrick@makztech.com?subject=MakzFlow%20Early%20Access">Request early access</a>
         </div>
       </div>
     </section>
@@ -791,9 +290,10 @@
 
   <footer>
     <div class="container footer-grid">
-      <p>MakzFlow — work in progress for small and medium-sized business sales, lead, and finance operations.</p>
+      <p>MakzFlow — all-in-one platform for modern businesses.</p>
       <p>Lead generation • Websites • Landing pages • CRM • Catalog • Cash flow</p>
     </div>
   </footer>
 </body>
 </html>
+
